@@ -5,9 +5,14 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "tsc:clean": "tsc --build --clean"
   },
   "devDependencies": {
     "nuxt": "^3.1.0"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "mongodb": "^4.13.0"
   }
 }
