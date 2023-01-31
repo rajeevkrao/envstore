@@ -1,8 +1,6 @@
 import * as crypto from 'crypto';
 
-let ckey:any = process.env.NUXT_CRYPTO_KEY
-
-export const encrypt = (plaintext:string, key:any=ckey) => {
+export const encrypt = (plaintext:string, key:string=process.env.NUXT_CRYPTO_KEY!) => {
     // IV is being generated for each encryption
     let iv = crypto.randomBytes(12),
     cipher = crypto.createCipheriv('aes-256-gcm',key,iv),
@@ -15,10 +13,10 @@ export const encrypt = (plaintext:string, key:any=ckey) => {
     // Auth tag must be generated after cipher.final()
     tag = cipher.getAuthTag();
 
- return encryptedData + "$$" + tag.toString('hex') + "$$" + iv.toString('hex');
+    return encryptedData + "$$" + tag.toString('hex') + "$$" + iv.toString('hex');
 }
 
-export const decrypt = (ciphertext:string, key:any=ckey) => {
+export const decrypt = (ciphertext:string, key:string=process.env.NUXT_CRYPTO_KEY!) => {
     let cipherSplit = ciphertext.split("$$"),
     text = cipherSplit[0],
     tag = Buffer.from(cipherSplit[1], 'hex'),
@@ -33,3 +31,9 @@ export const decrypt = (ciphertext:string, key:any=ckey) => {
     decryptedData += decipher.final('utf-8');
     return decryptedData
 }
+
+export const sash = (password:string) => {
+    if(!process.env.NUXT_SASH_KEY)
+      throw new Error("Unable to Access SALT HASH KEY")
+    return crypto.createHmac('sha512',process.env.NUXT_SASH_KEY!).update(password).digest('hex');
+  }

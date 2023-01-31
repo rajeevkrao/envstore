@@ -14,7 +14,7 @@ console.log(decrypt(edata))
 
 import * as dotenv from 'dotenv'
 dotenv.config()
-import { initMongoDB } from "./services/initMongo";
+import { initMongoDB } from "./services/helpers/initMongo";
 
 (async()=>{
     let client = await initMongoDB()
