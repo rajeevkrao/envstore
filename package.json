@@ -16,6 +16,7 @@
     "@types/jsonwebtoken": "^9.0.1",
     "crypto": "^1.0.1",
     "jsonwebtoken": "^9.0.0",
-    "mongodb": "^4.13.0"
+    "mongodb": "^4.13.0",
+    "@esbuild/linux-x64":"^0.17.5"
   }
 }
