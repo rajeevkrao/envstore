@@ -11,5 +11,5 @@ export const initMongoDB = async () =>{
         cache = new MongoClient(uri, { /* useNewUrlParser: true, useUnifiedTopology: true,  */ serverApi: ServerApiVersion.v1 });
     if(!cache?.topology)
         await cache.connect()
-    return cache
+    return cache as MongoClient
 }

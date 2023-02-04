@@ -1,3 +1,4 @@
+import { setResStatus } from "~~/services/helpers/h3";
 import { initMongoDB } from "~~/services/helpers/initMongo";
 
 export default defineEventHandler(async (event) => {
@@ -8,7 +9,6 @@ export default defineEventHandler(async (event) => {
     console.log(await client.db('envstore').listCollections().toArray())
     return {"Hello":"HELLO"} */
 
-    // @ts-expect-error
-    setResponseStatus(event,403,"Unauthorized")
+    setResStatus(event,403,"Unauthorized")
     return "Unauthorized!"
 })

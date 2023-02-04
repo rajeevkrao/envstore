@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { throwError, throwUnauthorized } from "~~/services/helpers/error";
+import { setResStatus } from '~~/services/helpers/h3';
 
 
 export default defineEventHandler(async (event) => {
@@ -14,8 +15,7 @@ export default defineEventHandler(async (event) => {
     catch(err:any){
         if(![403].includes(err?.code))
         console.log(err)
-        // @ts-expect-error
-        setResponseStatus(event, 403, "Unauthorized!")
+        setResStatus(event, 403, "Unauthorized!")
         return 'Unauthorized'
     }
     

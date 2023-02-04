@@ -2,5 +2,10 @@
     <div>
         <Check/>
     </div>
-  </template>
+</template>
+
+<script setup>
+    checkAuth();
+    
+</script>
   
