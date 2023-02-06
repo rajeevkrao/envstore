@@ -34,7 +34,10 @@ export const listEnvs = async(projectName:string) => {
 
 export const getEnvs = async(projectName:string, type:string) => {
     let client = await initMongoDB()
-    let res = (await client.db(db).collection(projectName).find({type:{$eq:type}}).toArray())[0]
-    Object.assign(res, {cipher:decrypt(res.cipher)})
+    let res = await client.db(db).collection(projectName).findOne({type:{$eq:type}})
+    if(res){
+        res.env = decrypt(res.cipher)
+        delete res.cipher
+    }   
     return res
 }

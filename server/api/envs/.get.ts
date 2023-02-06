@@ -8,7 +8,6 @@ export default defineEventHandler(async (event) => {
         const { projectName, type } = getQuery(event)
         let res = await getEnvs(projectName as string, type as string)
         return res
-        res.cipher
     }
     catch(err:any){
         if(err.code==26){

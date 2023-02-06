@@ -1,7 +1,7 @@
 <template>
     <div class="login">
-        <input v-model="text" @input="error=''" v-on:keyup.enter="login()" type="password" />
-        <button @click="login()">Login</button><br/>
+        <a-input v-model:value="text" @input="error=''" v-on:keyup.enter="login()" type="password" />
+        <a-button type="primary" @click="login()">Login</a-button><br/>
         <div class="error">{{ error }}</div>
     </div>
     
@@ -10,15 +10,15 @@
 <style scoped>
 
 .error{
-    font-size:2em;
+    /* font-size:2em; */
     color:red
 }
 .login{
     margin-top:30vh;
     text-align: center;
 }
-.login > input,button{
-    font-size:2em;
+.login > input{
+    width:90%
 }
 </style>
 

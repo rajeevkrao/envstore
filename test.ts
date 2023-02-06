@@ -18,7 +18,7 @@ import { initMongoDB } from "./services/helpers/initMongo";
 
 (async()=>{
     let client = await initMongoDB()
-    console.log(await client.db('envstore').listCollections().toArray())
+    console.log(await client.isConnected())
 })()
 
 
