@@ -5,8 +5,8 @@ import { setResStatus } from "~~/services/helpers/h3"
 export default defineEventHandler(async (event) => {
     try{
         verify(event)
-        const { projectName, type, data } = await readBody(event)
-        await addEnvs(projectName, type, data)
+        const { projectName, type } = await readBody(event)
+        await addEnvs(projectName, type)
         return {code:200,message:"Envs Created"}
     }
     catch(err:any){

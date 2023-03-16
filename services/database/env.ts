@@ -5,7 +5,7 @@ import { isProjectExist } from "./project";
 
 const db = 'envstore'
 
-export const addEnvs = async(projectName:string, type:string, data:string) => {
+export const addEnvs = async(projectName:string, type:string, data:string="") => {
     if(!await isProjectExist(projectName)) throwError(48, "NamespaceNotFound")
     let client = await initMongoDB()
     const cipher = encrypt(data)

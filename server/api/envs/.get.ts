@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
         verify(event)
         const { projectName, type } = getQuery(event)
         let res = await getEnvs(projectName as string, type as string)
-        return res
+        return res as unknown as env
     }
     catch(err:any){
         if(err.code==26){
@@ -20,3 +20,9 @@ export default defineEventHandler(async (event) => {
         return false
     } 
 })
+
+interface env{
+    _id:string,
+    type:string,
+    env:string
+}
